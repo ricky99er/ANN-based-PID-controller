@@ -1,0 +1,10 @@
+I =Input';
+T =Output';
+net = newff(minmax(I),[3,5,1],{'tansig','tansig', 'purelin', 'trainlm'});
+net = init(net);                     %Used to intialize the network - weight and biases
+net.trainParam.show=1;               %The result of error (mse)is shown
+net.trainParam.lr=0.6;               %Specify the value of learning rate
+net.trainParam.mc=0.95;              %Specify the value of the momentum
+net.trainParam.epochs=10000;        %Maximum limit of the network training
+net.trainParam.goal=1e-12;           %Stopping criteria based on error (mse) goal
+net=train(net, I, T);                %Start training the network
